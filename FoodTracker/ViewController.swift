@@ -38,7 +38,24 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
     func textFieldDidEndEditing(textField: UITextField) {
         mealNameLabel.text = textField.text
     }
+    //UIImagePickerControllerDelegate
     
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        //dismiss the picker if user cancelled
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: AnyObject]) {
+        //info dictionary contains multiple representations of the image. This uses the original.
+        let selectedImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+        
+        //set photoImageView to display the selected image
+        photoImageView.image = selectedImage
+        
+        //Dismiss the picker
+        dismissViewControllerAnimated(true, completion: nil)
+        
+    }
 
     // MARK: Actions
     
