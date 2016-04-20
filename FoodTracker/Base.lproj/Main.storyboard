@@ -33,17 +33,19 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                     </textField>
-                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="320" image="Default Photo" translatesAutoresizingMaskIntoConstraints="NO" id="9tm-CJ-Tdz">
+                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="320" image="Default Photo" translatesAutoresizingMaskIntoConstraints="NO" id="9tm-CJ-Tdz">
                                         <rect key="frame" x="120" y="75" width="320" height="320"/>
                                         <gestureRecognizers/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="9tm-CJ-Tdz" secondAttribute="height" multiplier="1:1" id="TG8-Tm-Vq7"/>
+                                            <constraint firstAttribute="height" constant="320" id="KPM-JG-Fx7"/>
+                                            <constraint firstAttribute="width" secondItem="9tm-CJ-Tdz" secondAttribute="height" multiplier="1:1" placeholder="YES" id="TG8-Tm-Vq7"/>
+                                            <constraint firstAttribute="width" constant="320" id="iQ4-JH-L4f"/>
                                         </constraints>
                                         <connections>
                                             <outletCollection property="gestureRecognizers" destination="La8-I0-m92" appends="YES" id="0Kt-VP-IIx"/>
                                         </connections>
                                     </imageView>
-                                    <view contentMode="scaleToFill" misplaced="YES" placeholderIntrinsicWidth="240" placeholderIntrinsicHeight="44" translatesAutoresizingMaskIntoConstraints="NO" id="PYL-ue-MMg" customClass="RatingControl" customModule="FoodTracker" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" placeholderIntrinsicWidth="240" placeholderIntrinsicHeight="44" translatesAutoresizingMaskIntoConstraints="NO" id="PYL-ue-MMg" customClass="RatingControl" customModule="FoodTracker" customModuleProvider="target">
                                         <rect key="frame" x="160" y="407" width="240" height="44"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
