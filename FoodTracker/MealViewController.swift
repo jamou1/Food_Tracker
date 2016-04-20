@@ -22,11 +22,18 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
     
     @IBOutlet weak var ratingControl: RatingControl!
     
+    @IBOutlet weak var saveButton: UIBarButtonItem!
+    
+    var meal: Meal?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //Handle the text field user input through delegate callbacks
         nameTextField.delegate = self
+        
+        //enable save only if text field has a valid meal name
+        checkValidMealName()
     }
     
     //UITextFieldDelegate
@@ -36,7 +43,20 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
         return true
     }
     
+    func textFieldDidBeginEditing(textField: UITextField) {
+        //disable save while editing
+        saveButton.enabled = false
+    }
+    
+    func checkValidMealName() {
+        //disable save if text field empty
+        let text = nameTextField.text ?? ""
+        saveButton.enabled = !text.isEmpty
+    }
+    
     func textFieldDidEndEditing(textField: UITextField) {
+        checkValidMealName()
+        navigationItem.title = textField.text
         
     }
     //UIImagePickerControllerDelegate
@@ -56,6 +76,23 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
         //Dismiss the picker
         dismissViewControllerAnimated(true, completion: nil)
         
+    }
+    
+    //MARK: Navigation
+    
+    @IBAction func cancel(sender: UIBarButtonItem) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if saveButton === sender {
+            let name = nameTextField.text ?? ""
+            let photo = photoImageView.image
+            let rating = ratingControl.rating
+            
+            //Set meal to be passed to MealTableViewController after unwind segue
+            meal = Meal(name: name, photo: photo, rating: rating)
+        }
     }
 
     // MARK: Actions
